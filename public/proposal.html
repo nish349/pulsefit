@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseFit Proposal - WebOrbs Studios</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1f2937;
+      /* Slate 800 */
+      line-height: 1.6;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: white;
+    }
+
+    /* Print Optimization */
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* Branding Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid #111;
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+    }
+
+    .brand-name {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #000;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    /* Title Block */
+    .title-section {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 20px;
+      background-color: #f9fafb;
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #111;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #4b5563;
+      font-weight: 500;
+    }
+
+    /* Meta Data Table */
+    .meta-table {
+      width: 100%;
+      margin-bottom: 40px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .meta-table td {
+      padding: 8px 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .meta-label {
+      font-weight: 700;
+      width: 25%;
+      color: #111;
+      background-color: #f3f4f6;
+    }
+
+    /* Headings */
+    h2 {
+      font-size: 18px;
+      border-left: 5px solid #000;
+      padding-left: 15px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #f9fafb;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Text & Lists */
+    p {
+      margin-bottom: 12px;
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    strong {
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Commercial Table */
+    .commercial-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 14px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .commercial-table th {
+      background-color: #111;
+      color: #fff;
+      text-align: left;
+      padding: 12px 15px;
+      font-weight: 600;
+    }
+
+    .commercial-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .commercial-table tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+
+    .cost-col {
+      text-align: right;
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+    }
+
+    .total-row td {
+      background-color: #e5e7eb;
+      font-weight: 800;
+      border-top: 2px solid #000;
+      color: #000;
+      font-size: 16px;
+    }
+
+    /* Signature Section */
+    .signature-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      page-break-inside: avoid;
+    }
+
+    .sig-block {
+      width: 45%;
+      border-top: 1px solid #000;
+      padding-top: 15px;
+    }
+
+    .sig-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .sig-date {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 10px;
+      color: #9ca3af;
+      margin-top: 50px;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 20px;
+    }
+
+    .investment-box {
+      border: 1px solid #e5e7eb;
+      padding: 15px;
+      background-color: #f0fdf4;
+      border-radius: 6px;
+    }
+
+    .investment-title {
+      font-weight: bold;
+      color: #166534;
+      margin-bottom: 10px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="brand-name">WebOrbs Studios.</div>
+    <div class="contact-info">
+      <strong>Proposer</strong><br />
+      Nishant Singh<br />
+      +91 9990364277 | singhnishant349@outlook.com
+    </div>
+  </div>
+
+  <div class="title-section">
+    <h1>Commercial Proposal</h1>
+    <div class="subtitle">PulseFit – Digital Experience Platform</div>
+  </div>
+
+  <table class="meta-table">
+    <tr>
+      <td class="meta-label">Prepared for:</td>
+      <td>PulseFit Gym (India)</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Prepared by:</td>
+      <td>WebOrbs Studios</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Date:</td>
+      <td>January 24, 2026</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Project Duration:</td>
+      <td>4–5 Weeks</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Total Investment:</td>
+      <td>₹36,000 (GST Exclusive)</td>
+    </tr>
+  </table>
+
+  <h2>1. Executive Summary</h2>
+  <p>
+    This proposal outlines the development of <strong>PulseFit</strong>, a high-performance, full-stack gym management
+    and digital experience platform.
+  </p>
+  <p>
+    The platform is engineered to streamline gym operations while providing a premium digital experience for members.
+    It combines robust operational tools with a visually stunning, custom-built web interface.
+  </p>
+
+  <h2>2. Detailed Scope of Work & Feature Breakdown</h2>
+
+  <h3>2.1 Basic Platform Build (Foundation)</h3>
+  <p>
+    The core engineering and design required to bring the platform to life using <strong>Next.js 14 and Tailwind
+      CSS</strong>.
+  </p>
+  <ul>
+    <li><strong>UI/UX Design System:</strong> Custom layout, typography, color palette, and component library.</li>
+    <li><strong>Public Website:</strong> Hero section, Services, About Us, and Facility showcase (Bento Grid).</li>
+    <li><strong>Performance Engineering:</strong> SEO optimization, mobile responsiveness, and fast loading speeds.</li>
+    <li><strong>Deployment Architecture:</strong> Secure hosting setup on Vercel with GitHub integration.</li>
+  </ul>
+
+  <h3>2.2 Admin Panel (Command Center)</h3>
+  <p>
+    A centralized dashboard for gym owners and staff to manage operations.
+  </p>
+  <ul>
+    <li><strong>Member Management:</strong> Add/Remove members, view details, and manage status.</li>
+    <li><strong>Staff Controls:</strong> Role-based access for trainers and receptionists.</li>
+    <li><strong>Analytics Overview:</strong> Quick insights into new signups and active members.</li>
+  </ul>
+
+  <h3>2.3 Member Panel (User Dashboard)</h3>
+  <p>
+    A dedicated portal for gym members to manage their fitness journey.
+  </p>
+  <ul>
+    <li><strong>Profile Management:</strong> Personal details and goal tracking.</li>
+    <li><strong>Subscription Status:</strong> View active plans and renewal dates.</li>
+    <li><strong>Attendance History:</strong> Log of past visits and workout frequency.</li>
+  </ul>
+
+  <h3>2.4 Payment Gateway Integration</h3>
+  <p>
+    Seamless, secure payment processing for memberships and services.
+  </p>
+  <ul>
+    <li>Integration with Razorpay/Stripe (UPI, Cards, Netbanking).</li>
+    <li>Automated receipt generation.</li>
+    <li>Secure transaction handling and status updates.</li>
+  </ul>
+
+  <h3>2.5 Real-Time Live Counter</h3>
+  <p>
+    An advanced feature to display real-time gym occupancy.
+  </p>
+  <ul>
+    <li>**"Pulse" Indicator:** Visual crowd meter (Low/Medium/High) on the website.</li>
+    <li>Live updates to help members plan their workout times.</li>
+    <li>Admin controls to override or calibrate counters.</li>
+  </ul>
+
+  <h3>2.6 Smart Attendance Management</h3>
+  <p>
+    Modern entry tracking system for security and analytics.
+  </p>
+  <ul>
+    <li><strong>QR Code / Biometric Logic:</strong> Digital check-in logs.</li>
+    <li>Integration logic for physical scanner hardware (software side).</li>
+    <li>Daily/Weekly attendance report generation.</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <h2>3. Commercial Summary (Feature-based)</h2>
+  <table class="commercial-table">
+    <thead>
+      <tr>
+        <th>Functional Module</th>
+        <th class="cost-col">Cost (INR)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Basic Building Charges</strong><br /><span
+            style="font-size:12px; font-weight:normal; color:#666">Core Design, Website, UI/UX Setup</span>
+        </td>
+        <td class="cost-col">8,000</td>
+      </tr>
+      <tr>
+        <td><strong>Admin Panel</strong><br /><span style="font-size:12px; font-weight:normal; color:#666">Management
+            Dashboard & Controls</span></td>
+        <td class="cost-col">15,000</td>
+      </tr>
+      <tr>
+        <td><strong>Member Panel</strong><br /><span style="font-size:12px; font-weight:normal; color:#666">User
+            Dashboard & Profile</span></td>
+        <td class="cost-col">8,000</td>
+      </tr>
+      <tr>
+        <td><strong>Attendance Management</strong><br /><span
+            style="font-size:12px; font-weight:normal; color:#666">QR/Machine Integration Logic</span></td>
+        <td class="cost-col">5,000</td>
+      </tr>
+      <tr>
+        <td><strong>Live Counter</strong><br /><span style="font-size:12px; font-weight:normal; color:#666">Real-time
+            Occupancy Tracker</span></td>
+        <td class="cost-col">Inc. with Attendance Management</td>
+      </tr>
+      <!-- <tr>
+        <td><strong>Payment Gateway</strong><br /><span
+            style="font-size:12px; font-weight:normal; color:#666">Integration & Security</span></td>
+        <td class="cost-col">15,000</td>
+      </tr> -->
+      <tr class="total-row">
+        <td>Total (GST Exclusive)</td>
+        <td class="cost-col">₹36,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Timeline & Milestones</h2>
+  <ul>
+    <li><strong>Phase 1: Foundation (Week 1-2):</strong> Basic Building Build & Design System.</li>
+    <li><strong>Phase 2: Core Logic (Week 3):</strong> Admin & Member Panels, Attendance Logic.</li>
+    <li><strong>Phase 3: Integrations (Week 4):</strong> Payments, Live Counter, Testing.</li>
+    <li><strong>Phase 4: Deployment (Week 5):</strong> Final review and Go-Live.</li>
+  </ul>
+
+  <h2>5. Payment Terms</h2>
+  <ul>
+    <li><strong>50% Advance:</strong> Project initiation</li>
+    <li><strong>50% Balance:</strong> Upon final delivery & approval</li>
+    <li>All amounts are GST inclusive.</li>
+  </ul>
+
+  <h2>6. Deployment & Infrastructure (Client Scope)</h2>
+  <p>
+    We facilitate the technical setup, but all <strong>operational & infrastructure costs</strong> are billed directly
+    to the client to ensure full ownership.
+  </p>
+  <ul>
+    <li><strong>Domain Name:</strong> Client to purchase directly (e.g., Godaddy/Namecheap).</li>
+    <li><strong>Hosting (Vercel/AWS):</strong> Free tier available initially; Pro tier (~$20/mo) if scaling needed.</li>
+    <li><strong>Database & Storage:</strong> Standard cloud usage charges apply if limits exceeded.</li>
+    <li><strong>Third-Party APIs:</strong> Any paid integrations (SMS, WhatsApp, custom specific APIs).</li>
+  </ul>
+
+  <div class="investment-box">
+    <span class="investment-title">7. Why This Investment Makes Sense</span>
+    <ul>
+      <li><strong>Modular Pricing:</strong> You pay for value-adding features, not just "hours".</li>
+      <li><strong>Scalable:</strong> The "Basic" foundation supports adding more modules later.</li>
+      <li><strong>Premium Experience:</strong> Custom features like the Live Counter set you apart from generic gyms.
+      </li>
+    </ul>
+  </div>
+
+  <h2>Approval & Acceptance</h2>
+  <p>By approving this proposal, the client agrees to the scope, timeline, and commercial terms outlined above.</p>
+
+  <div class="signature-section">
+    <div class="sig-block">
+      <div class="sig-title">Client Signature</div>
+      <br /><br />
+      <div class="sig-date">______________________________</div>
+      <div class="sig-date">Date: ________________________</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-title">Nishant Singh (WebOrbs Studios)</div>
+      <br /><br />
+      <div class="sig-date">______________________________</div>
+      <div class="sig-date">Date: January 24, 2026</div>
+    </div>
+  </div>
+
+  <div class="footer">WebOrbs Studios | PulseFit Commercial Proposal | Page 2 of 2</div>
+</body>
+
+</html>

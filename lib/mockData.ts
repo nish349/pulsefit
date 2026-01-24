@@ -129,7 +129,7 @@ export const pricingPlans: Plan[] = [
   {
     id: 'business',
     name: 'Business Plan',
-    price: '₹5000',
+    price: '₹5000',   
     features: ['15-minute assessment', '98% accuracy rate', 'Sport-specific insights', 'Priority Support'],
     highlight: true,
   },
