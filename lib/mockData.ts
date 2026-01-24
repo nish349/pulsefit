@@ -1,0 +1,267 @@
+// This structure allows the UI to know which cards should be wide vs tall
+export interface InventoryCategory {
+  id: string;
+  title: string; // e.g., "The Heavy Zone"
+  description: string;
+  backgroundImage: string; // URL for the card background
+  // The magic property for the Bento look:
+  gridConfig: string;
+  items: {
+    name: string;
+    count: number;
+  }[];
+}
+
+export interface Plan {
+  id: string;
+  name: string;
+  price: string;
+  features: string[];
+  highlight: boolean;
+}
+
+export interface PromoCode {
+  code: string;
+  discountType: 'percent' | 'fixed';
+  value: number;
+}
+
+
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+}
+
+export const team: TeamMember[] = [
+  {
+    id: 't1',
+    name: 'Muhamad Fadli',
+    role: 'Professional Coach',
+    bio: 'With over 15 years in professional sports coaching, Fadli specializes in biomechanics and athlete psychological profiling.',
+    image: '/demo-images/testimonial-1.jpg',
+  },
+  {
+    id: 't2',
+    name: 'Sarah Chen',
+    role: 'Olympic Trainer',
+    bio: 'Former Olympic physiotherapist dedicated to injury prevention and recovery strategies for elite performance.',
+    image: '/demo-images/testimonial-2.jpg',
+  },
+  {
+    id: 't3',
+    name: 'Marcus Johnson',
+    role: 'Gym Owner',
+    bio: 'Founded PulseFit with a vision to integrate technology with traditional strength training.',
+    image: '/demo-images/testimonial-3.jpg',
+  },
+];
+
+export interface Review {
+  id: string;
+  author: string;
+  rating: number;
+  text: string;
+  time: string;
+}
+
+export const reviews: Review[] = [
+  {
+    id: 'r1',
+    author: 'Jessica Lee',
+    rating: 5,
+    text: 'Hands down the best gym facility in the city. The equipment is top-tier and the atmosphere is electric.',
+    time: '2 weeks ago',
+  },
+  {
+    id: 'r2',
+    author: 'David Smith',
+    rating: 5,
+    text: 'The AI assessment really helped me understand my training blocks. Highly recommended!',
+    time: '1 month ago',
+  },
+  {
+    id: 'r3',
+    author: 'Emily Davis',
+    rating: 4,
+    text: 'Great recovery zone. The sauna and cold plunge are life savers after a heavy leg day.',
+    time: '3 days ago',
+  },
+  {
+    id: 'r4',
+    author: 'Michael Brown',
+    rating: 5,
+    text: 'Staff is incredibly knowledgeable and the community is very supportive. Love the functional area.',
+    time: '1 week ago',
+  },
+];
+
+export const services = [
+  {
+    title: 'The Iron Pit',
+    image: '/demo-images/heavy-zone.jpg',
+    description: 'Heavy lifting zone with Olympic racks, dumbbells (up to 50kg), and deadlift platforms.',
+  },
+  {
+    title: 'Cardio Deck',
+    image: '/demo-images/cardio.jpg',
+    description: 'Endurance station featuring advanced treadmills, ellipticals, and rowers with city views.',
+  },
+  {
+    title: 'Rhythm Ride',
+    image: '/demo-images/studio.jpg',
+    description: 'High-intensity cycling synced to neon lights and bass-heavy beats.',
+  },
+];
+
+
+export const pricingPlans: Plan[] = [
+  {
+    id: 'basic',
+    name: 'Basic Plan',
+    price: '₹3000',
+    features: ['15-minute assessment', '98% accuracy rate', 'Sport-specific insights'],
+    highlight: false,
+  },
+  {
+    id: 'business',
+    name: 'Business Plan',
+    price: '₹5000',
+    features: ['15-minute assessment', '98% accuracy rate', 'Sport-specific insights', 'Priority Support'],
+    highlight: true,
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise Plan',
+    price: '₹8000',
+    features: ['15-minute assessment', '98% accuracy rate', 'Sport-specific insights', 'Dedicated Agent'],
+    highlight: false,
+  },
+];
+
+export const validPromoCodes: PromoCode[] = [
+  { code: 'WELCOME20', discountType: 'percent', value: 20 },
+  { code: 'START50', discountType: 'fixed', value: 50 },
+  { code: 'FIT10', discountType: 'percent', value: 10 },
+];
+
+
+export const faqs = [
+  {
+    question: "I'm a complete beginner. Will I feel out of place?",
+    answer: "Honestly? No. We built PulseFit to be 'Ego-Free.' Every new member gets a free 30-minute orientation session where we show you exactly how to use the equipment so you never feel lost."
+  },
+  {
+    question: "Is the gym super crowded in the evenings?",
+    answer: "Like every gym, 6 PM - 8 PM is our peak time. However, you can check the 'Live Crowd Meter' on our website or app before you leave home to see exactly how busy we are in real-time."
+  },
+  {
+    question: "Do I need to pay extra for Personal Training?",
+    answer: "General gym access and group classes are included in your membership. 1-on-1 Personal Training is an add-on service, but we offer affordable packages and your first consultation is free."
+  },
+  {
+    question: "What about parking?",
+    answer: "We have a dedicated parking lot for members right outside. It's free for up to 2 hours while you workout, so you don't need to stress about finding a spot."
+  },
+  {
+    question: "Do I need to bring my own padlock?",
+    answer: "No need. Our lockers use digital keypad locks. You just set a 4-digit code when you close the door. It's secure and hassle-free."
+  },
+  {
+    question: "Is it hard to cancel my membership?",
+    answer: "We hate hidden contracts as much as you do. You can cancel anytime with just 30 days' notice directly through your member dashboard. No awkward phone calls required."
+  },
+  {
+    question: "Can I freeze my membership if I travel?",
+    answer: "Absolutely. We offer 'Hybrid Access' for travelers, which gives you on-demand workouts. If you need a complete break, you can freeze your membership for up to 3 months per year directly through the dashboard."
+  },
+  {
+    question: "Do you offer guest passes?",
+    answer: "Yes. Every member receives 2 complimentary 'VIP Guest Passes' per month to bring friends or family. Guests get full access to the Iron Pit, Cardio Deck, and general classes."
+  }
+];
+export interface FacilityItem {
+  id: string;
+  title: string;
+  description: string;
+  backgroundImage: string;
+  gridConfig: string; // Tailored for the bento grid
+}
+
+export const facilityCatalog: FacilityItem[] = [
+  // 1. Strength Training Zone
+  {
+    id: 'iron-pit',
+    title: 'The Iron Pit',
+    description: 'Heavy lifting zone with Olympic racks, dumbbells (up to 50kg), and deadlift platforms.',
+    backgroundImage: '/demo-images/heavy-zone.jpg',
+    gridConfig: 'col-span-1 md:col-span-2 row-span-1',
+  },
+  // 2. Cardio Deck
+  {
+    id: 'cardio-deck',
+    title: 'Cardio Deck',
+    description: 'Endurance station featuring advanced treadmills, ellipticals, and rowers with city views.',
+    backgroundImage: '/demo-images/cardio.jpg',
+    gridConfig: 'col-span-1 row-span-1',
+  },
+  // 3. Functional Training Area
+  {
+    id: 'functional-area',
+    title: 'Functional Training',
+    description: 'Open turf space for kettlebells, battle ropes, and sled pushes.',
+    backgroundImage: '/demo-images/functional.jpg',
+    gridConfig: 'col-span-1 row-span-1',
+  },
+  // 4. Recovery Lounge
+  {
+    id: 'recovery-lounge',
+    title: 'Recovery Lounge',
+    description: 'Post-workout relaxation including steam, sauna, and premium shower suites.',
+    backgroundImage: '/demo-images/recovery.jpg',
+    gridConfig: 'col-span-1 md:col-span-2 row-span-1',
+  },
+  // 5. Rhythm Ride
+  {
+    id: 'rhythm-ride',
+    title: 'Rhythm Ride',
+    description: 'High-intensity cycling synced to neon lights and bass-heavy beats.',
+    backgroundImage: '/demo-images/studio.jpg', // Placeholder - Class
+    gridConfig: 'col-span-1 row-span-1',
+  },
+  // 6. Power Flow Yoga
+  {
+    id: 'power-yoga',
+    title: 'Power Flow Yoga',
+    description: 'Strength-based vinyasa yoga to build core stability and focus.',
+    backgroundImage: '/demo-images/hero-right.jpg', // Placeholder - Class
+    gridConfig: 'col-span-1 row-span-1',
+  },
+  // 7. Combat HIIT
+  {
+    id: 'combat-hiit',
+    title: 'Combat HIIT',
+    description: 'Boxing-inspired high-intensity interval training. No contact, max sweat.',
+    backgroundImage: '/demo-images/testimonial-1.jpg', // Placeholder
+    gridConfig: 'col-span-1 row-span-1',
+  },
+  // 8. Dance Fusion
+  {
+    id: 'dance-fusion',
+    title: 'Dance Fusion',
+    description: 'High-energy dance cardio mixing Latin beats with modern hip-hop.',
+    backgroundImage: '/demo-images/testimonial-2.jpg', // Placeholder
+    gridConfig: 'col-span-1 md:col-span-2 row-span-1',
+  },
+  // 9. Power Pump
+  {
+    id: 'power-pump',
+    title: 'Power Pump',
+    description: 'Full-body resistance workout using light weights and high reps.',
+    backgroundImage: '/demo-images/testimonial-3.jpg', // Placeholder
+    gridConfig: 'col-span-1 row-span-1',
+  },
+];
