@@ -40,7 +40,7 @@ export default function FeaturesSection({ limit }: FeaturesSectionProps) {
           )}
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 h-[600px] w-full">
+        <div className="flex flex-col md:flex-row gap-4 h-[800px] md:h-[600px] w-full">
           {displayServices.map((service, i) => {
              const isHovered = hoveredIndex === i;
              return (

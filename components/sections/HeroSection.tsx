@@ -65,7 +65,7 @@ export default function HeroSection() {
           {/* Text Content (Overlaid) */}
           <motion.div style={{ opacity: opacityContent, y }} className="relative z-10 text-center max-w-5xl space-y-8 px-4 mt-20">
              
-             <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-white leading-[0.9] drop-shadow-2xl">
+             <h1 className="text-5xl md:text-9xl font-black tracking-tighter text-white leading-[0.9] drop-shadow-2xl">
                Unlock Your <br/>
                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">True Potential</span>
              </h1>

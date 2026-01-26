@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PulseFit - Next-Gen Gym Management Platform
 
-## Getting Started
+PulseFit is a modern, high-performance web application designed to manage premium fitness centers. It combines a sleek, "Apple Wallet" style member experience with a powerful "Mission Control" admin dashboard.
 
-First, run the development server:
+![PulseFit Preview](https://placehold.co/1200x600/10b981/0a0f1c?text=PulseFit+Preview)
+
+## 🚀 Features
+
+### For Members (`/dashboard`)
+- **Digital Entry Pass**: Switch between **QR Code** and **Biometric** entry modes.
+- **Real-Time Stats**: View active streak, weight trends, and upcoming classes.
+- **Mobile-First Design**: Smooth, app-like experience with glassmorphism UI.
+
+### For Admins (`/admin`)
+- **Mission Control**: A futuristic dashboard monitoring gym health.
+- **Live Occupancy Tracking**: Real-time crowd meter synced across all devices (demonstrates **Zustand** + **BroadcastChannel** state sync).
+- **Access Control**: Instantly toggle a member's entry method (QR vs Biometric) remotely.
+- **Lead Managment**: Track sales pipeline and member status.
+
+### Public Site (`/`)
+- **Immersive Landing Page**: High-performance marketing page with scroll animations.
+- **Crowd Meter**: Public-facing widget showing current gym capacity.
+- **Multi-Step Checkout**: Frictionless signup flow with "Pay at Gym" reservation support.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with a custom "Neon/Dark" theme.
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) (Client state & Cross-tab sync).
+- **Animations**: [Framer Motion](https://www.framer.com/motion/).
+- **Icons**: [Lucide React](https://lucide.dev/).
+- **QR Codes**: `react-qr-code`.
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+/
+├── app/
+│   ├── (admin)/        # Admin Routes (protected layout)
+│   ├── (public)/       # Marketing Routes & Member Pages
+│   └── layout.tsx      # Root Layout
+├── components/
+│   ├── admin/          # Admin-specific widgets (Sidebar, Controllers)
+│   ├── layout/         # Shared layouts (Navbar, Footer)
+│   ├── member/         # Member features (DigitalPass)
+│   ├── sections/       # Landing Page sections
+│   └── ui/             # Reusable atoms (Buttons, Cards)
+├── lib/
+│   ├── mockData.ts     # Static data for prototyping
+│   ├── store.ts        # Global Zustand store
+│   └── utils.ts        # Helper functions (cn for Tailwind)
+└── public/             # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚡ Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+3. **Open in Browser**
+   - Public Site: `http://localhost:3000`
+   - Admin Dashboard: `http://localhost:3000/admin`
+   - Member Dashboard: `http://localhost:3000/dashboard`
 
-To learn more about Next.js, take a look at the following resources:
+## 🧪 Key Demos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Live Sync**: Open `/admin` and `/` in two side-by-side windows. Drag the **Occupancy Slider** in Admin and watch the **Crowd Meter** update instantly on the public site.
+- **Dynamic Entry**: Open `/dashboard`. In `/admin`, toggle the **Access Control** switch to see the Digital Pass transform from QR to Biometric.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built with ❤️ by the WebOrbs Engineering Team.*

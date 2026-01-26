@@ -265,3 +265,65 @@ export const facilityCatalog: FacilityItem[] = [
     gridConfig: 'col-span-1 row-span-1',
   },
 ];
+
+export interface MemberProfile {
+  id: string;
+  name: string;
+  tier: 'Basic' | 'Business' | 'Enterprise';
+  status: 'Active' | 'Frozen' | 'Cancelled';
+  joinDate: string;
+  aiAssessmentScore: number;
+}
+
+export const members: MemberProfile[] = [
+  { id: 'm1', name: 'Alex Johnson', tier: 'Enterprise', status: 'Active', joinDate: '2023-01-15', aiAssessmentScore: 88 },
+  { id: 'm2', name: 'Maria Garcia', tier: 'Basic', status: 'Frozen', joinDate: '2023-03-22', aiAssessmentScore: 72 },
+  { id: 'm3', name: 'James Smith', tier: 'Business', status: 'Active', joinDate: '2023-02-10', aiAssessmentScore: 92 },
+  { id: 'm4', name: 'Linda Brown', tier: 'Basic', status: 'Cancelled', joinDate: '2022-11-05', aiAssessmentScore: 65 },
+  { id: 'm5', name: 'Robert Wilson', tier: 'Enterprise', status: 'Active', joinDate: '2023-04-01', aiAssessmentScore: 95 },
+];
+
+export const currentUser = {
+  id: 'user_123',
+  name: 'Nishant Singh',
+  tier: 'Enterprise',
+  accessMethod: 'qr', // Options: 'qr' or 'biometric'
+  activeStreak: 14,
+  weightTrend: -2.5, // kg
+  nextClass: {
+    name: 'Rhythm Ride',
+    time: 'Tomorrow, 07:00 AM',
+    instructor: 'Sarah Chen'
+  }
+};
+
+export interface MaintenanceLog {
+  id: string;
+  deviceId: string;
+  reportedBy: string;
+  issue: string;
+  severity: 'Low' | 'Critical';
+  status: 'Operational' | 'Needs Service' | 'Broken';
+  date: string;
+}
+
+export const maintenanceLogs: MaintenanceLog[] = [
+  { id: 'log1', deviceId: 'TM-01', reportedBy: 'Staff', issue: 'Belt slipping', severity: 'Low', status: 'Needs Service', date: '2023-10-25' },
+  { id: 'log2', deviceId: 'EL-03', reportedBy: 'Member', issue: 'Screen unresponsive', severity: 'Critical', status: 'Broken', date: '2023-10-26' },
+  { id: 'log3', deviceId: 'row-02', reportedBy: 'Staff', issue: 'Routine Check', severity: 'Low', status: 'Operational', date: '2023-10-24' },
+];
+
+export interface FinancialRecord {
+  id: string;
+  type: 'Membership' | 'One-Time';
+  amount: number;
+  status: 'Paid' | 'Pending' | 'Failed';
+  date: string;
+}
+
+export const financialRecords: FinancialRecord[] = [
+  { id: 'tx1', type: 'Membership', amount: 5000, status: 'Paid', date: '2023-10-26' },
+  { id: 'tx2', type: 'One-Time', amount: 1500, status: 'Paid', date: '2023-10-25' },
+  { id: 'tx3', type: 'Membership', amount: 3000, status: 'Pending', date: '2023-10-27' },
+  { id: 'tx4', type: 'Membership', amount: 8000, status: 'Failed', date: '2023-10-24' },
+];
