@@ -59,7 +59,7 @@ export default function Footer() {
                © 2026 PulseFit. All rights reserved.
             </div>
             <div>
-               Designed & Developed by <a href="https://nish349.github.io/nish.dev/" target="_blank" rel="noopener noreferrer" className="text-slate-200 hover:text-neon transition-colors">S.Nish Studios</a>
+               Designed & Developed by <a href="https://nish349.github.io/nish.dev/" target="_blank" rel="noopener noreferrer" className="text-slate-200 hover:text-neon transition-colors">WebOrbs Studios</a>
             </div>
          </div>
       </div>
