@@ -14,7 +14,10 @@ import {
   ShieldCheck,
   ChevronLeft,
   ChevronRight,
-  TrendingUp
+  TrendingUp,
+  UserCog,
+  Plus,
+  CreditCard
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -27,8 +30,10 @@ const menuItems = [
   { icon: Users, label: 'Members', href: '/admin/members' },
   { icon: Calendar, label: 'Schedule', href: '/admin/schedule' },
   { icon: TrendingUp, label: 'Sales Leads', href: '/admin/leads' },
-  { icon: ShieldCheck, label: 'Access Control', href: '/admin/access' },
-  { icon: Settings, label: 'Settings', href: '/admin/settings' },
+  { icon: ShieldCheck, label: 'Access Log', href: '/admin/access' },
+  { icon: UserCog, label: 'Staff', href: '/admin/staff' },
+  { icon: CreditCard, label: 'Manage Plans', href: '/admin/plans' },
+  { icon: Activity, label: 'Maintenance', href: '/admin/maintenance' },
 ];
 
 export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
@@ -54,10 +59,23 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
           </Link>
         </div>
 
+        {/* Quick Action */}
+        <div className="p-3">
+            <button className={cn(
+                "w-full flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-all border border-slate-700 hover:border-slate-600 group",
+                isOpen ? "px-4 py-2.5" : "p-2 justify-center aspect-square"
+            )}>
+                <div className="bg-neon text-slate-950 rounded flex items-center justify-center w-5 h-5 flex-shrink-0">
+                    <Plus size={14} strokeWidth={3} />
+                </div>
+                {isOpen && <span className="text-sm font-bold whitespace-nowrap">Add Member</span>}
+            </button>
+        </div>
+
         {/* Navigation */}
-        <nav className="flex-1 py-6 px-3 space-y-1 overflow-y-auto custom-scrollbar">
+        <nav className="flex-1 py-2 px-3 space-y-1 overflow-y-auto custom-scrollbar">
            {menuItems.map((item) => {
-             const isActive = pathname === item.href;
+             const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== '/admin');
              return (
                <Link 
                   key={item.href} 

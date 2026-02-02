@@ -1,6 +1,6 @@
 'use client';
 
-import { InventoryCategory, FacilityItem } from '@/lib/mockData';
+import { InventoryCategory, FacilityItem } from '@/lib/demo-data';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';

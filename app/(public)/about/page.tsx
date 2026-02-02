@@ -4,7 +4,7 @@ import FadeIn from '@/components/ui/FadeIn';
 import Counter from '@/components/ui/Counter';
 import FAQSection from '@/components/sections/FAQSection';
 import TeamCard from '@/components/ui/TeamCard';
-import { team } from '@/lib/mockData';
+import { team } from '@/lib/demo-data';
 import { Activity, Zap, Users, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';

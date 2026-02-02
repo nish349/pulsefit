@@ -1,32 +1,19 @@
-// This structure allows the UI to know which cards should be wide vs tall
+
+// Moved from lib/mockData.ts
+// Preserving static content for UI sections
+// removing 'pricingPlans' to enforce Database usage
+
 export interface InventoryCategory {
   id: string;
-  title: string; // e.g., "The Heavy Zone"
+  title: string;
   description: string;
-  backgroundImage: string; // URL for the card background
-  // The magic property for the Bento look:
+  backgroundImage: string;
   gridConfig: string;
   items: {
     name: string;
     count: number;
   }[];
 }
-
-export interface Plan {
-  id: string;
-  name: string;
-  price: string;
-  features: string[];
-  highlight: boolean;
-}
-
-export interface PromoCode {
-  code: string;
-  discountType: 'percent' | 'fixed';
-  value: number;
-}
-
-
 
 export interface TeamMember {
   id: string;
@@ -117,38 +104,6 @@ export const services = [
   },
 ];
 
-
-export const pricingPlans: Plan[] = [
-  {
-    id: 'basic',
-    name: 'Basic Plan',
-    price: '₹3000',
-    features: ['15-minute assessment', '98% accuracy rate', 'Sport-specific insights'],
-    highlight: false,
-  },
-  {
-    id: 'business',
-    name: 'Business Plan',
-    price: '₹5000',   
-    features: ['15-minute assessment', '98% accuracy rate', 'Sport-specific insights', 'Priority Support'],
-    highlight: true,
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise Plan',
-    price: '₹8000',
-    features: ['15-minute assessment', '98% accuracy rate', 'Sport-specific insights', 'Dedicated Agent'],
-    highlight: false,
-  },
-];
-
-export const validPromoCodes: PromoCode[] = [
-  { code: 'WELCOME20', discountType: 'percent', value: 20 },
-  { code: 'START50', discountType: 'fixed', value: 50 },
-  { code: 'FIT10', discountType: 'percent', value: 10 },
-];
-
-
 export const faqs = [
   {
     question: "I'm a complete beginner. Will I feel out of place?",
@@ -183,16 +138,16 @@ export const faqs = [
     answer: "Yes. Every member receives 2 complimentary 'VIP Guest Passes' per month to bring friends or family. Guests get full access to the Iron Pit, Cardio Deck, and general classes."
   }
 ];
+
 export interface FacilityItem {
   id: string;
   title: string;
   description: string;
   backgroundImage: string;
-  gridConfig: string; // Tailored for the bento grid
+  gridConfig: string;
 }
 
 export const facilityCatalog: FacilityItem[] = [
-  // 1. Strength Training Zone
   {
     id: 'iron-pit',
     title: 'The Iron Pit',
@@ -200,7 +155,6 @@ export const facilityCatalog: FacilityItem[] = [
     backgroundImage: '/demo-images/heavy-zone.jpg',
     gridConfig: 'col-span-1 md:col-span-2 row-span-1',
   },
-  // 2. Cardio Deck
   {
     id: 'cardio-deck',
     title: 'Cardio Deck',
@@ -208,7 +162,6 @@ export const facilityCatalog: FacilityItem[] = [
     backgroundImage: '/demo-images/cardio.jpg',
     gridConfig: 'col-span-1 row-span-1',
   },
-  // 3. Functional Training Area
   {
     id: 'functional-area',
     title: 'Functional Training',
@@ -216,7 +169,6 @@ export const facilityCatalog: FacilityItem[] = [
     backgroundImage: '/demo-images/functional.jpg',
     gridConfig: 'col-span-1 row-span-1',
   },
-  // 4. Recovery Lounge
   {
     id: 'recovery-lounge',
     title: 'Recovery Lounge',
@@ -224,48 +176,44 @@ export const facilityCatalog: FacilityItem[] = [
     backgroundImage: '/demo-images/recovery.jpg',
     gridConfig: 'col-span-1 md:col-span-2 row-span-1',
   },
-  // 5. Rhythm Ride
   {
     id: 'rhythm-ride',
     title: 'Rhythm Ride',
     description: 'High-intensity cycling synced to neon lights and bass-heavy beats.',
-    backgroundImage: '/demo-images/studio.jpg', // Placeholder - Class
+    backgroundImage: '/demo-images/studio.jpg',
     gridConfig: 'col-span-1 row-span-1',
   },
-  // 6. Power Flow Yoga
   {
     id: 'power-yoga',
     title: 'Power Flow Yoga',
     description: 'Strength-based vinyasa yoga to build core stability and focus.',
-    backgroundImage: '/demo-images/hero-right.jpg', // Placeholder - Class
+    backgroundImage: '/demo-images/hero-right.jpg',
     gridConfig: 'col-span-1 row-span-1',
   },
-  // 7. Combat HIIT
   {
     id: 'combat-hiit',
     title: 'Combat HIIT',
     description: 'Boxing-inspired high-intensity interval training. No contact, max sweat.',
-    backgroundImage: '/demo-images/testimonial-1.jpg', // Placeholder
+    backgroundImage: '/demo-images/testimonial-1.jpg',
     gridConfig: 'col-span-1 row-span-1',
   },
-  // 8. Dance Fusion
   {
     id: 'dance-fusion',
     title: 'Dance Fusion',
     description: 'High-energy dance cardio mixing Latin beats with modern hip-hop.',
-    backgroundImage: '/demo-images/testimonial-2.jpg', // Placeholder
+    backgroundImage: '/demo-images/testimonial-2.jpg',
     gridConfig: 'col-span-1 md:col-span-2 row-span-1',
   },
-  // 9. Power Pump
   {
     id: 'power-pump',
     title: 'Power Pump',
     description: 'Full-body resistance workout using light weights and high reps.',
-    backgroundImage: '/demo-images/testimonial-3.jpg', // Placeholder
+    backgroundImage: '/demo-images/testimonial-3.jpg',
     gridConfig: 'col-span-1 row-span-1',
   },
 ];
 
+// MOCK data for Admin Dashboard until migrated
 export interface MemberProfile {
   id: string;
   name: string;
@@ -287,9 +235,9 @@ export const currentUser = {
   id: 'user_123',
   name: 'Nishant Singh',
   tier: 'Enterprise',
-  accessMethod: 'qr', // Options: 'qr' or 'biometric'
+  accessMethod: 'qr', 
   activeStreak: 14,
-  weightTrend: -2.5, // kg
+  weightTrend: -2.5,
   nextClass: {
     name: 'Rhythm Ride',
     time: 'Tomorrow, 07:00 AM',

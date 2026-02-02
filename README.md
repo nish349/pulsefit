@@ -2,7 +2,7 @@
 
 PulseFit is a modern, high-performance web application designed to manage premium fitness centers. It combines a sleek, "Apple Wallet" style member experience with a powerful "Mission Control" admin dashboard.
 
-![PulseFit Preview](https://placehold.co/1200x600/10b981/0a0f1c?text=PulseFit+Preview)
+![PulseFit Preview](<public/Black And White Simple Website Launch Instagram Post.png>)
 
 ## 🚀 Features
 

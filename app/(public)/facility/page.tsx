@@ -1,4 +1,4 @@
-import { facilityCatalog } from '@/lib/mockData';
+import { facilityCatalog } from '@/lib/demo-data';
 import FacilityGrid from '@/components/ui/FacilityGrid';
 import { Metadata } from 'next';
 

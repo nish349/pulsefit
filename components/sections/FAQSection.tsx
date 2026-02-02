@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { faqs } from '@/lib/mockData';
+import { faqs } from '@/lib/demo-data';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 

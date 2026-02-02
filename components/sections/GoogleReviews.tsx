@@ -1,6 +1,6 @@
 'use client';
 
-import { reviews } from '@/lib/mockData';
+import { reviews } from '@/lib/demo-data';
 import { Star } from 'lucide-react';
 
 export default function GoogleReviews() {

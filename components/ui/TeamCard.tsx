@@ -1,6 +1,6 @@
 'use client';
 
-import { TeamMember } from '@/lib/mockData';
+import { TeamMember } from '@/lib/demo-data';
 import Image from 'next/image';
 
 export default function TeamCard({ member }: { member: TeamMember }) {

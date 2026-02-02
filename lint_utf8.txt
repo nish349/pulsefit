@@ -1,0 +1,308 @@
+﻿
+> pulse-fit@0.1.0 lint
+> eslint
+
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\leads\page.tsx
+   3:28  warning  'useState' is defined but never used                                                                      @typescript-eslint/no-unused-vars
+   6:35  warning  'CheckCircle' is defined but never used                                                                   @typescript-eslint/no-unused-vars
+   8:7   warning  'mockLeadsData' is assigned a value but never used                                                        @typescript-eslint/no-unused-vars
+  26:18  warning  'setLeads' is assigned a value but never used                                                             @typescript-eslint/no-unused-vars
+  40:6   warning  React Hook useEffect has a missing dependency: 'leads'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\maintenance\page.tsx
+   5:10  warning  'Activity' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  11:21  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\maintenance\page.tsx:11:21
+   9 |     // Determine hydration
+  10 |     const [isMounted, setIsMounted] = useState(false);
+> 11 |     useEffect(() => setIsMounted(true), []);
+     |                     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  12 |
+  13 |     const { systems, setSystems, updateSystem } = useGymStore();
+  14 |     const [editingId, setEditingId] = useState<string | null>(null);  react-hooks/set-state-in-effect
+  38:29  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-explicit-any
+  69:18  warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\[id]\page.tsx
+   6:3   warning  'User' is defined but never used      @typescript-eslint/no-unused-vars
+   6:9   warning  'QrCode' is defined but never used    @typescript-eslint/no-unused-vars
+   7:15  warning  'Calendar' is defined but never used  @typescript-eslint/no-unused-vars
+   7:54  warning  'Save' is defined but never used      @typescript-eslint/no-unused-vars
+  61:45  warning  'params' is defined but never used    @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx
+   11:48  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+   15:20  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:15:20
+  13 |   // Sync local state with global store
+  14 |   useEffect(() => {
+> 15 |       if (members) setMemberList(members);
+     |                    ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  16 |   }, [members]);
+  17 |   
+  18 |   // Search & Filter State                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/set-state-in-effect
+   32:56  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+   36:11  error  'result' is never reassigned. Use 'const' instead                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      prefer-const
+   47:27  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+   47:35  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+   92:38  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+  204:73  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:204:73
+  202 |             <tr>
+  203 |               <th className="px-6 py-4 cursor-pointer hover:text-white hover:bg-slate-900/50 transition-colors" onClick={(e) => {e.stopPropagation(); handleSort('name');}}>
+> 204 |                   <div className="flex items-center gap-2">Member Info <SortIcon columnKey="name" /></div>
+      |                                                                         ^^^^^^^^ This component is created during render
+  205 |               </th>
+  206 |               <th className="px-6 py-4 cursor-pointer hover:text-white hover:bg-slate-900/50 transition-colors" onClick={(e) => {e.stopPropagation(); handleSort('tier');}}>
+  207 |                   <div className="flex items-center gap-2">Tier <SortIcon columnKey="tier" /></div>
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:117:20
+  115 |
+  116 |   // Helper for Sort Icon
+> 117 |   const SortIcon = ({ columnKey }: { columnKey: string }) => {
+      |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 118 |       if (sortConfig?.key !== columnKey) return <ArrowUpDown size={14} className="opacity-30" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 119 |       return sortConfig.direction === 'asc' ? <ChevronUp size={14} className="text-emerald-500" /> : <ChevronDown size={14} className="text-emerald-500" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 120 |   };
+      | ^^^^ The component is created during render here
+  121 |
+  122 |   return (
+  123 |     <div className="space-y-6 pb-20" onClick={handleGlobalClick}>            react-hooks/static-components
+  207:66  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:207:66
+  205 |               </th>
+  206 |               <th className="px-6 py-4 cursor-pointer hover:text-white hover:bg-slate-900/50 transition-colors" onClick={(e) => {e.stopPropagation(); handleSort('tier');}}>
+> 207 |                   <div className="flex items-center gap-2">Tier <SortIcon columnKey="tier" /></div>
+      |                                                                  ^^^^^^^^ This component is created during render
+  208 |               </th>
+  209 |               <th className="px-6 py-4 cursor-pointer hover:text-white hover:bg-slate-900/50 transition-colors" onClick={(e) => {e.stopPropagation(); handleSort('status');}}>
+  210 |                   <div className="flex items-center gap-2">Status <SortIcon columnKey="status" /></div>
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:117:20
+  115 |
+  116 |   // Helper for Sort Icon
+> 117 |   const SortIcon = ({ columnKey }: { columnKey: string }) => {
+      |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 118 |       if (sortConfig?.key !== columnKey) return <ArrowUpDown size={14} className="opacity-30" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 119 |       return sortConfig.direction === 'asc' ? <ChevronUp size={14} className="text-emerald-500" /> : <ChevronDown size={14} className="text-emerald-500" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 120 |   };
+      | ^^^^ The component is created during render here
+  121 |
+  122 |   return (
+  123 |     <div className="space-y-6 pb-20" onClick={handleGlobalClick}>                 react-hooks/static-components
+  210:68  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:210:68
+  208 |               </th>
+  209 |               <th className="px-6 py-4 cursor-pointer hover:text-white hover:bg-slate-900/50 transition-colors" onClick={(e) => {e.stopPropagation(); handleSort('status');}}>
+> 210 |                   <div className="flex items-center gap-2">Status <SortIcon columnKey="status" /></div>
+      |                                                                    ^^^^^^^^ This component is created during render
+  211 |               </th>
+  212 |               <th className="px-6 py-4 cursor-pointer hover:text-white hover:bg-slate-900/50 transition-colors" onClick={(e) => {e.stopPropagation(); handleSort('joinDate');}}>
+  213 |                   <div className="flex items-center gap-2">Join Date <SortIcon columnKey="joinDate" /></div>
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:117:20
+  115 |
+  116 |   // Helper for Sort Icon
+> 117 |   const SortIcon = ({ columnKey }: { columnKey: string }) => {
+      |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 118 |       if (sortConfig?.key !== columnKey) return <ArrowUpDown size={14} className="opacity-30" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 119 |       return sortConfig.direction === 'asc' ? <ChevronUp size={14} className="text-emerald-500" /> : <ChevronDown size={14} className="text-emerald-500" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 120 |   };
+      | ^^^^ The component is created during render here
+  121 |
+  122 |   return (
+  123 |     <div className="space-y-6 pb-20" onClick={handleGlobalClick}>  react-hooks/static-components
+  213:71  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:213:71
+  211 |               </th>
+  212 |               <th className="px-6 py-4 cursor-pointer hover:text-white hover:bg-slate-900/50 transition-colors" onClick={(e) => {e.stopPropagation(); handleSort('joinDate');}}>
+> 213 |                   <div className="flex items-center gap-2">Join Date <SortIcon columnKey="joinDate" /></div>
+      |                                                                       ^^^^^^^^ This component is created during render
+  214 |               </th>
+  215 |               <th className="px-6 py-4">
+  216 |                   Expiry (Est)
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\members\page.tsx:117:20
+  115 |
+  116 |   // Helper for Sort Icon
+> 117 |   const SortIcon = ({ columnKey }: { columnKey: string }) => {
+      |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 118 |       if (sortConfig?.key !== columnKey) return <ArrowUpDown size={14} className="opacity-30" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 119 |       return sortConfig.direction === 'asc' ? <ChevronUp size={14} className="text-emerald-500" /> : <ChevronDown size={14} className="text-emerald-500" />;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 120 |   };
+      | ^^^^ The component is created during render here
+  121 |
+  122 |   return (
+  123 |     <div className="space-y-6 pb-20" onClick={handleGlobalClick}>                                                                                                                                                                                                              react-hooks/static-components
+  349:71  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\page.tsx
+   22:73  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   46:9   warning  'churnRate' is assigned a value but never used                   @typescript-eslint/no-unused-vars
+  177:68  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\staff\page.tsx
+   6:10  warning  'Search' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+   8:7   warning  'mockStaffData' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+  20:52  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-explicit-any
+  25:11  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\admin\staff\page.tsx:25:11
+  23 |       // Seed if empty for demo ? or just show empty
+  24 |       if (staff && staff.length > 0) {
+> 25 |           setDisplayStaff(staff);
+     |           ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  26 |       } else {
+  27 |           // Initialize mock if empty?
+  28 |           // setDisplayStaff(mockStaffData);   react-hooks/set-state-in-effect
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(admin)\components\OccupancyController.tsx
+  22:74  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  22:86  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(public)\about\page.tsx
+   9:10   warning  'motion' is defined but never used                               @typescript-eslint/no-unused-vars
+  10:10   warning  'cn' is defined but never used                                   @typescript-eslint/no-unused-vars
+  61:106  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  61:123  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(public)\page.tsx
+  3:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(public)\register\page.tsx
+    4:27  warning  'useRouter' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+   36:15  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\app\(public)\register\page.tsx:36:15
+  34 |   useEffect(() => {
+  35 |     const plan = searchParams.get('plan');
+> 36 |     if (plan) setSelectedPlanId(plan);
+     |               ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  37 |   }, [searchParams]);
+  38 |
+  39 |   const selectedPlan = pricingPlans.find(p => p.id === selectedPlanId) || pricingPlans[0];  react-hooks/set-state-in-effect
+  133:24  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react/no-unescaped-entities
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\admin\Sidebar.tsx
+   11:3   warning  'Settings' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+  111:24  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\layout\CrowdMeter.tsx
+  6:10  warning  'Activity' is defined but never used  @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\layout\Footer.tsx
+  3:69  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\layout\Navbar.tsx
+  5:10  warning  'cn' is defined but never used  @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\member\DigitalPass.tsx
+  5:23  warning  'ScanLine' is defined but never used  @typescript-eslint/no-unused-vars
+  8:10  warning  'cn' is defined but never used        @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\sections\AboutScrollSection.tsx
+   93:50  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   93:65  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  105:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  110:55  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  110:70  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\sections\ContactSection.tsx
+   21:84  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  121:10  warning  'ChevronRightIcon' is defined but never used                     @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\sections\FAQSection.tsx
+  21:19  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\sections\HeroSection.tsx
+  74:118  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\sections\PremiumStandardSection.tsx
+  41:15  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  46:35  warning  'idx' is defined but never used                                  @typescript-eslint/no-unused-vars
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\sections\PricingSection.tsx
+  11:21  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\sections\PricingSection.tsx:11:21
+   9 |     // Determine hydration to avoid mismatch since we use localStorage
+  10 |     const [isMounted, setIsMounted] = useState(false);
+> 11 |     useEffect(() => setIsMounted(true), []);
+     |                     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  12 |     
+  13 |     const { plans } = useGymStore();
+  14 |  react-hooks/set-state-in-effect
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\components\ui\FacilityGrid.tsx
+  46:51  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\lib\api.ts
+   5:93  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  21:89  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+F:\Development Workspace\My Workspace\WIP\Pulse-Fit\lib\store.ts
+   25:12  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   26:25  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   29:10  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   30:21  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   33:10  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   34:21  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  146:56  error  Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  152:21  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+Γ£û 73 problems (44 errors, 29 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+

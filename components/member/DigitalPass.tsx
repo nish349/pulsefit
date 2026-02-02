@@ -4,7 +4,7 @@ import React from 'react';
 import QRCode from 'react-qr-code';
 import { Fingerprint, ScanLine } from 'lucide-react';
 import { useGymStore } from '@/lib/store';
-import { currentUser } from '@/lib/mockData';
+import { currentUser } from '@/lib/demo-data';
 import { cn } from '@/lib/utils';
 import { Activity } from 'lucide-react';
 
@@ -36,14 +36,20 @@ export default function DigitalPass() {
         {/* Dynamic Entry Display */}
         <div className="flex-1 flex flex-col items-center justify-center w-full my-6">
            <div className="relative p-6 rounded-2xl bg-white/5 border border-white/10 shadow-inner">
-               {accessMethod === 'qr' ? (
-                   <div className="bg-white p-4 rounded-xl">
+               {accessMethod === 'qr' || accessMethod === 'both' ? (
+                   <div className="bg-white p-4 rounded-xl relative">
                        <QRCode 
                            value={`user:${currentUser.id}`} 
                            size={180}
                            viewBox={`0 0 256 256`}
                            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                        />
+                       {/* Biometric Badge Overlay for BOTH mode */}
+                       {accessMethod === 'both' && (
+                           <div className="absolute -bottom-3 -right-3 bg-emerald-500 text-slate-950 p-2 rounded-full border-4 border-slate-900 shadow-xl" title="Biometric Entry Also Active">
+                               <Fingerprint size={20} />
+                           </div>
+                       )}
                    </div>
                ) : (
                    <div className="w-48 h-48 flex items-center justify-center relative">
@@ -59,8 +65,12 @@ export default function DigitalPass() {
                </div>
            </div>
 
-           <p className="mt-6 text-sm font-medium text-slate-300 animate-pulse">
-               {accessMethod === 'qr' ? 'Scan at Turnstile' : 'Bio-Auth Ready'}
+           <p className="mt-6 text-sm font-medium text-slate-300 animate-pulse flex items-center gap-2">
+               {accessMethod === 'qr' ? 'Scan at Turnstile' : 
+                accessMethod === 'biometric' ? 'Bio-Auth Ready' : 
+                <>
+                    Scan QR <span className="text-slate-500">•</span> Bio-Auth Ready
+                </>}
            </p>
         </div>
 

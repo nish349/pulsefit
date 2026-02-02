@@ -2,7 +2,7 @@
 
 import React from 'react';
 import DigitalPass from '@/components/member/DigitalPass';
-import { currentUser } from '@/lib/mockData';
+import { currentUser } from '@/lib/demo-data';
 import { Flame, TrendingDown, ChevronRight, CalendarClock, Dumbbell } from 'lucide-react';
 
 export default function MemberDashboard() {

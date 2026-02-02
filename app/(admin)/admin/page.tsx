@@ -9,10 +9,11 @@ import {
   ArrowDownRight, 
   CreditCard, 
   Clock,
-  MoreHorizontal
+  MoreHorizontal,
+  AlertCircle // Added for confirmation modal
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { members, financialRecords, currentUser } from '@/lib/mockData';
+import { members, financialRecords, currentUser } from '@/lib/demo-data';
 import { useGymStore } from '@/lib/store';
 import { Fingerprint, ScanLine } from 'lucide-react';
 
@@ -42,7 +43,7 @@ export default function AdminDashboard() {
   const totalMembers = members.length;
   const activeMembers = members.filter(m => m.status === 'Active').length;
   const frozenMembers = members.filter(m => m.status === 'Frozen').length;
-  const churnRate = 2.4; // constant for now
+  // const churnRate = 2.4; // constant for now - unused
   const monthlyRevenue = financialRecords.reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
@@ -50,7 +51,7 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Mission Control</h1>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Admin Panel</h1>
           <p className="text-slate-400 text-sm">Welcome back. System status: <span className="text-emerald-500 font-medium">Nominal</span></p>
         </div>
         <div className="flex items-center gap-3">
@@ -69,8 +70,8 @@ export default function AdminDashboard() {
         
         <StatCard 
             title="Revenue Pulse" 
-            value={`$${(monthlyRevenue / 1000).toFixed(1)}k`} 
-            subValue="vs $15.2k Target" 
+            value={`₹${(monthlyRevenue / 1000).toFixed(1)}k`} 
+            subValue="vs ₹15.2k Target" 
             trend={12.5} 
             icon={TrendingUp} 
             color="emerald" 
@@ -102,12 +103,12 @@ export default function AdminDashboard() {
         </div>
 
         <StatCard 
-            title="New Signups" 
+            title="New Leads" 
             value="12" 
-            subValue="Past 7 Days" 
-            trend={8.1} 
-            icon={Users} 
-            color="purple" 
+            subValue="3 Contacted Today" 
+            trend={15.4} 
+            icon={TrendingUp} 
+            color="amber" 
         />
       </div>
 
@@ -173,7 +174,7 @@ export default function AdminDashboard() {
                          <AccessToggle />
                      </div>
                      <p className="text-xs text-slate-500 mt-2">
-                         Toggling this instantly updates the member's Digital Pass from QR to Bio-Auth.
+                         Toggling this instantly updates the member&apos;s Digital Pass from QR to Bio-Auth.
                      </p>
                  </div>
              </div>
@@ -207,25 +208,7 @@ export default function AdminDashboard() {
              </div>
              
              {/* Upcoming Classes Preview */}
-             <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-5">
-                <h3 className="font-bold text-white mb-4">Shift Supervisor</h3>
-                <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-slate-700 bg-[url('/demo-images/testimonial-2.jpg')] bg-cover"></div>
-                    <div>
-                        <div className="text-sm font-bold text-white">Sarah Chen</div>
-                        <div className="text-xs text-slate-400">Floor Manager</div>
-                    </div>
-                </div>
-                <div className="space-y-2">
-                    <div className="text-xs text-slate-500 uppercase tracking-wider mb-2">My Tasks</div>
-                     {['Check morning inventory', 'Review trainer schedules', 'Approve maintenance request'].map((task, i) => (
-                         <div key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                             <input type="checkbox" className="rounded border-slate-700 bg-slate-800 text-emerald-500 focus:ring-emerald-500/50" />
-                             <span className={i === 0 ? "line-through text-slate-600" : ""}>{task}</span>
-                         </div>
-                     ))}
-                </div>
-             </div>
+             {/* Shift Supervisor Removed */}
           </div>
       </div>
     </div>
@@ -234,21 +217,96 @@ export default function AdminDashboard() {
 
 function AccessToggle() {
   const { accessMethod, setAccessMethod } = useGymStore();
-  
-  const isBio = accessMethod === 'biometric';
+  const [showConfirm, setShowConfirm] = React.useState(false);
+  const [pendingMethod, setPendingMethod] = React.useState<'qr' | 'biometric' | 'both' | null>(null);
+
+  const handleRequestChange = (method: 'qr' | 'biometric' | 'both') => {
+      if (method === accessMethod) return; // No change needed
+      setPendingMethod(method);
+      setShowConfirm(true);
+  };
+
+  const confirmChange = () => {
+      if (pendingMethod) {
+          setAccessMethod(pendingMethod);
+      }
+      setShowConfirm(false);
+      setPendingMethod(null);
+  };
   
   return (
-    <button 
-      onClick={() => setAccessMethod(isBio ? 'qr' : 'biometric')}
-      className={cn(
-          "w-12 h-6 rounded-full p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/50",
-          isBio ? "bg-emerald-500" : "bg-slate-700"
-      )}
-    >
-      <div className={cn(
-          "w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-300",
-          isBio ? "translate-x-6" : "translate-x-0"
-      )} />
-    </button>
+    <>
+    <div className="flex bg-slate-800/50 p-1 rounded-lg border border-slate-700/50">
+        <button 
+            onClick={() => handleRequestChange('qr')}
+            className={cn(
+                "px-3 py-1 text-xs font-bold rounded-md transition-all",
+                accessMethod === 'qr' ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20" : "text-slate-400 hover:text-white"
+            )}
+        >
+            QR
+        </button>
+        <button 
+            onClick={() => handleRequestChange('biometric')}
+            className={cn(
+                "px-3 py-1 text-xs font-bold rounded-md transition-all",
+                accessMethod === 'biometric' ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20" : "text-slate-400 hover:text-white"
+            )}
+        >
+            Bio
+        </button>
+        <button 
+            onClick={() => handleRequestChange('both')}
+            className={cn(
+                "px-3 py-1 text-xs font-bold rounded-md transition-all",
+                accessMethod === 'both' ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20" : "text-slate-400 hover:text-white"
+            )}
+        >
+            Both
+        </button>
+    </div>
+
+    {/* Confirmation Modal */}
+    {showConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-6 shadow-2xl relative">
+                <button 
+                    onClick={() => setShowConfirm(false)}
+                    className="absolute top-4 right-4 text-slate-500 hover:text-white"
+                >
+                    ✕
+                </button>
+                
+                <h3 className="text-lg font-bold text-white mb-2">Confirm Access Switch</h3>
+                <p className="text-sm text-slate-400 mb-6">
+                    Are you sure you want to switch the global access method to <strong className="text-white uppercase">{pendingMethod}</strong>?
+                </p>
+
+                <div className="bg-amber-950/30 border border-amber-900/50 p-3 rounded-lg flex items-start gap-3 mb-6">
+                    <AlertCircle className="text-amber-500 shrink-0 mt-0.5" size={16} />
+                    <div className="text-xs text-amber-200/80">
+                        <strong className="block text-amber-500 mb-1">Impact Warning</strong>
+                        This will immediately update the Digital Pass for all {members.length} active members.
+                    </div>
+                </div>
+
+                <div className="flex gap-3">
+                    <button 
+                        onClick={() => setShowConfirm(false)}
+                        className="flex-1 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 transition-colors"
+                    >
+                        Cancel
+                    </button>
+                    <button 
+                        onClick={confirmChange}
+                        className="flex-1 py-2.5 rounded-lg text-sm font-medium bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 transition-all"
+                    >
+                        Confirm Switch
+                    </button>
+                </div>
+            </div>
+        </div>
+    )}
+    </>
   );
 }
