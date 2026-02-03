@@ -42,7 +42,7 @@ export default function MembersPage() {
 
   // Derived Data (Search + Filter + Sort)
   const filteredMembers = useMemo(() => {
-      let result = safeMembers.filter((member: Member) => {
+      const result = safeMembers.filter((member: Member) => {
           const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                                 member.id.toLowerCase().includes(searchTerm.toLowerCase());
           

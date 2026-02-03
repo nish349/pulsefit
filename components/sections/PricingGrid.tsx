@@ -4,26 +4,13 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 import Link from 'next/link';
-import { useQuery } from '@tanstack/react-query';
-import { getPublicPlans } from '@/app/actions/plans';
 import { Plan } from '@/types';
 
 interface PricingGridProps {
   plans: Plan[];
 }
 
-export default function PricingGrid({ plans: initialPlans }: PricingGridProps) {
-  const { data: plans } = useQuery({
-    queryKey: ['public-plans'],
-    queryFn: async () => {
-      const raw = await getPublicPlans();
-      return raw.map(p => ({ ...p, features: p.features || [] }));
-    },
-    initialData: initialPlans,
-    refetchInterval: 2000,
-    refetchIntervalInBackground: true,
-  });
-
+export default function PricingGrid({ plans }: PricingGridProps) {
   if (!plans || plans.length === 0) return null;
 
   return (

@@ -16,7 +16,7 @@ interface System {
 export default function MaintenancePage() {
     // Determine hydration
     const [isMounted, setIsMounted] = useState(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
     useEffect(() => setIsMounted(true), []);
 
     const { systems, setSystems, updateSystem } = useGymStore();

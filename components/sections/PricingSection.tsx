@@ -3,30 +3,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
-
-import { useQuery } from '@tanstack/react-query';
-import { getPublicPlans } from '@/app/actions/plans';
 import { Plan } from '@/types';
 
 interface PricingSectionProps {
     plans: Plan[];
 }
 
-export default function PricingSection({ plans: initialPlans }: PricingSectionProps) {
-    const { data: plans } = useQuery({
-        queryKey: ['public-plans'],
-        queryFn: async () => {
-            const raw = await getPublicPlans();
-            // Sanitize
-            return raw.map(p => ({ ...p, features: p.features || [] }));
-        },
-        initialData: initialPlans,
-        refetchInterval: 2000,
-        refetchIntervalInBackground: true, // Poll even when tab is not in focus
-    });
-
+export default function PricingSection({ plans }: PricingSectionProps) {
     if (!plans || plans.length === 0) return null;
-
 
     return (
         <section className="py-24 bg-[#0a0f1c] relative overflow-hidden" id="pricing">

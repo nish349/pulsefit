@@ -9,21 +9,18 @@ import crypto from 'node:crypto';
 
 // We define a separate input type because we accept 'password' but save 'passwordHash'
 export type CreateMemberInput = Omit<typeof members.$inferInsert, 'passwordHash' | 'id' | 'joinedAt'> & {
-    password?: string; // Optional because initially maybe they don't set it? But requirement says hash it.
+    password?: string;
 };
 
 export async function createMember(data: CreateMemberInput) {
   try {
-    let passwordHash = "";
+    // Only hash if password is provided (e.g. later updates or if we keep it optional)
+    let passwordHash: string | null = null;
     
     if (data.password) {
         const salt = crypto.randomBytes(16).toString('hex');
         const hash = crypto.pbkdf2Sync(data.password, salt, 1000, 64, 'sha512').toString('hex');
         passwordHash = `${salt}:${hash}`;
-    } else {
-        // Fallback for demo if no password provided (should enforce in UI)
-        // Or if using social login (future proofing)
-        passwordHash = "temp_placeholder_hash"; 
     }
     
     // Omit password from matching 'data' to database columns
@@ -31,7 +28,7 @@ export async function createMember(data: CreateMemberInput) {
 
     const result = await db.insert(members).values({
         ...dbData,
-        passwordHash,
+        passwordHash, // Now can be null
         dob: data.dob || new Date(),
         role: data.role || 'member',
         status: data.status || 'pending_payment'

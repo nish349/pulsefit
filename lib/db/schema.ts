@@ -1,5 +1,5 @@
 
-import { pgTable, serial, text, integer, timestamp, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp, pgEnum, boolean } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 // 1. Enums
@@ -8,7 +8,7 @@ export const statusEnum = pgEnum("status", ["active", "inactive", "pending_payme
 export const genderEnum = pgEnum("gender", ["male", "female", "other"]);
 
 // 2. Plans Table
-import { boolean } from "drizzle-orm/pg-core";
+
 
 export const plans = pgTable("plans", {
   id: serial("id").primaryKey(),
@@ -25,7 +25,7 @@ export const members = pgTable("members", {
   lastName: text("last_name").notNull(),
   email: text("email").notNull().unique(),
   phone: text("phone").notNull(),
-  passwordHash: text("password_hash").notNull(),
+  passwordHash: text("password_hash"),
   gender: genderEnum("gender").notNull(),
   dob: timestamp("dob").notNull(),
   address: text("address").notNull(),
