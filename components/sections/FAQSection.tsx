@@ -18,7 +18,7 @@ export default function FAQSection() {
               Got questions?
             </h2>
             <p className="text-slate-400 text-lg">
-              Here's everything you need to know to get started and stay ahead.
+              Here&apos;s everything you need to know to get started and stay ahead.
             </p>
           </div>
 
@@ -27,8 +27,8 @@ export default function FAQSection() {
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="bg-slate-900/50 rounded-2xl border border-white/5 overflow-hidden transition-colors hover:bg-slate-900"
                 >
                   <button
@@ -37,10 +37,10 @@ export default function FAQSection() {
                   >
                     <span className="text-lg font-bold text-white">{faq.question}</span>
                     <div className="flex-shrink-0 ml-4 text-neon">
-                       {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                      {isOpen ? <Minus size={20} /> : <Plus size={20} />}
                     </div>
                   </button>
-                  
+
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
@@ -49,9 +49,9 @@ export default function FAQSection() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                         <div className="px-6 pb-6 text-slate-400 leading-relaxed">
-                            {faq.answer}
-                         </div>
+                        <div className="px-6 pb-6 text-slate-400 leading-relaxed">
+                          {faq.answer}
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>

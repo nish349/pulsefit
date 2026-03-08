@@ -38,17 +38,17 @@ export default function PremiumStandardSection() {
             The Premium Standard
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            We've elevated every detail of the gym experience to ensure your focus stays entirely on your performance.
+            We&apos;ve elevated every detail of the gym experience to ensure your focus stays entirely on your performance.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, idx) => (
-            <div 
+            <div
               key={feature.title}
               className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-center"
             >
-              <div 
+              <div
                 className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-slate-950 flex items-center justify-center border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500`}
               >
                 <feature.icon size={32} className={`${feature.color} drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]`} />

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ScanLine, X, Camera } from "lucide-react";
+import { Card } from "@/components/ui/Card";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function CheckInScanner() {
@@ -10,9 +11,11 @@ export default function CheckInScanner() {
   return (
     <>
       {/* Trigger Button */}
-      <button
+      <Card
         onClick={() => setIsOpen(true)}
-        className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 p-6 rounded-2xl flex items-center justify-between group transition-all shadow-lg shadow-emerald-500/20"
+        className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 !p-6 flex items-center justify-between group cursor-pointer shadow-lg shadow-emerald-500/20"
+        role="button"
+        tabIndex={0}
       >
         <div className="flex flex-col items-start gap-1">
           <span className="text-2xl font-black uppercase tracking-tight">Scan to Check-In</span>
@@ -21,7 +24,7 @@ export default function CheckInScanner() {
         <div className="bg-slate-950/20 p-4 rounded-xl group-hover:scale-110 transition-transform">
           <ScanLine size={32} strokeWidth={2.5} />
         </div>
-      </button>
+      </Card>
 
       {/* Visual Modal */}
       <AnimatePresence>

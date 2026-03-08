@@ -1,24 +1,47 @@
 'use client';
 
-import React, { useState } from 'react';
-import Sidebar from '@/components/admin/Sidebar';
+import React from 'react';
+import { Activity, BarChart, Users, Calendar, Settings, LogOut, ShieldCheck, TrendingUp, UserCog, CreditCard } from 'lucide-react';
+import PanelLayout, { PanelConfig } from '@/components/layout/PanelLayout';
+
+const adminConfig: PanelConfig = {
+  panelName: (
+    <>
+      <div className="w-8 h-8 flex-shrink-0 bg-neon rounded-lg flex items-center justify-center text-slate-950">
+        <Activity size={20} className="stroke-[3]" />
+      </div>
+      <span className="font-bold text-xl text-white tracking-tight hidden md:block group-[.w-64]:block">
+        Pulse<span className="text-neon">Admin</span>
+      </span>
+    </>
+  ),
+  navItems: [
+    { icon: BarChart, label: 'Dashboard', href: '/admin' },
+    { icon: Users, label: 'Members', href: '/admin/members' },
+    { icon: Calendar, label: 'Schedule', href: '/admin/schedule' },
+    { icon: TrendingUp, label: 'Sales Leads', href: '/admin/leads' },
+    { icon: ShieldCheck, label: 'Access Log', href: '/admin/access' },
+    { icon: UserCog, label: 'Staff', href: '/admin/staff' },
+    { icon: CreditCard, label: 'Manage Plans', href: '/admin/plans' },
+    { icon: Settings, label: 'Settings', href: '/admin/settings' }, // Kept Settings just in case or we can ignore
+  ],
+  userProfile: {
+    name: "Marcus Admin",
+    role: "Station Manager",
+    avatarUrl: "/demo-images/avatar-admin.jpg",
+  },
+  basePath: '/admin',
+  theme: 'admin'
+};
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-200 overflow-hidden font-sans selection:bg-emerald-500/30">
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-      <main className="flex-1 overflow-y-auto relative bg-[#0B0F17] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 pointer-events-none"></div>
-        <div className="relative z-10 p-6 md:p-8 max-w-7xl mx-auto">
-           {children}
-        </div>
-      </main>
-    </div>
+    <PanelLayout config={adminConfig}>
+      {children}
+    </PanelLayout>
   );
 }

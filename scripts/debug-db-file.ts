@@ -7,7 +7,7 @@ import fs from 'fs';
 
 async function run() {
   const logs: string[] = [];
-  const log = (...args: any[]) => {
+  const log = (...args: unknown[]) => {
       console.log(...args);
       logs.push(args.map(a => JSON.stringify(a, null, 2)).join(' '));
   };

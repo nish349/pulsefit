@@ -5,10 +5,11 @@ import { Fingerprint, ScanLine, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useGymStore } from '@/lib/store';
 import { members, currentUser } from '@/lib/demo-data';
+import { Card } from '@/components/ui/Card';
 
 export default function AccessControlCard() {
   return (
-    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 relative overflow-hidden shadow-2xl group h-full">
+    <Card className="relative overflow-hidden group h-full">
       <div className="absolute top-0 right-0 p-8 opacity-[0.03] rotate-12 group-hover:rotate-0 transition-transform duration-700">
         <Fingerprint size={120} className="text-white" />
       </div>
@@ -38,7 +39,7 @@ export default function AccessControlCard() {
           Toggling this instantly updates the member&apos;s Digital Pass from QR to Bio-Auth.
         </p>
       </div>
-    </div>
+    </Card>
   );
 }
 

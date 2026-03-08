@@ -3,20 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Activity, Wrench, CheckCircle, AlertTriangle, XCircle, Plus, Edit2, Save, X, Trash2 } from 'lucide-react';
-import { useGymStore } from '@/lib/store';
+import { useGymStore, SystemStatus } from '@/lib/store';
 
-interface System {
-  id: string;
-  name: string;
-  status: string;
-  reportedAt?: string;
-  [key: string]: any;
-}
+
 
 export default function MaintenancePage() {
     // Determine hydration
     const [isMounted, setIsMounted] = useState(false);
-     
+
+    // eslint-disable-next-line
     useEffect(() => setIsMounted(true), []);
 
     const { systems, setSystems, updateSystem } = useGymStore();
@@ -44,7 +39,7 @@ export default function MaintenancePage() {
         setEditName(newSystem.name);
     };
 
-    const startEdit = (sys: System) => {
+    const startEdit = (sys: SystemStatus) => {
         setEditingId(sys.id);
         setEditName(sys.name);
     };
@@ -88,12 +83,12 @@ export default function MaintenancePage() {
 
     return (
         <div className="space-y-6 pb-20">
-             <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-white tracking-tight">System Health</h1>
                     <p className="text-slate-400 text-sm">Monitor and update facility infrastructure status.</p>
                 </div>
-                <button 
+                <button
                     onClick={attemptReport}
                     className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg transition-colors border border-slate-700"
                 >
@@ -119,15 +114,15 @@ export default function MaintenancePage() {
                                 <tr key={sys.id} className="hover:bg-slate-800/30 transition-colors group">
                                     <td className="px-6 py-4 font-medium text-white">
                                         <div className="flex items-center gap-3">
-                                            <div className={cn("w-2 h-2 rounded-full flex-shrink-0", 
-                                                sys.status === 'Operational' ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" : 
-                                                sys.status === 'Maintenance' ? "bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]" : 
-                                                "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"
+                                            <div className={cn("w-2 h-2 rounded-full flex-shrink-0",
+                                                sys.status === 'Operational' ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" :
+                                                    sys.status === 'Maintenance' ? "bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]" :
+                                                        "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"
                                             )} />
-                                            
+
                                             {isEditing ? (
                                                 <div className="flex items-center gap-2">
-                                                    <input 
+                                                    <input
                                                         value={editName}
                                                         onChange={(e) => setEditName(e.target.value)}
                                                         className="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white text-sm focus:border-[#00FFCC] outline-none"
@@ -139,8 +134,8 @@ export default function MaintenancePage() {
                                             ) : (
                                                 <div className="flex items-center gap-2">
                                                     <span>{sys.name}</span>
-                                                    <button 
-                                                        onClick={() => startEdit(sys)} 
+                                                    <button
+                                                        onClick={() => startEdit(sys)}
                                                         className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-500 hover:text-[#00FFCC] p-1"
                                                     >
                                                         <Edit2 size={12} />
@@ -157,21 +152,21 @@ export default function MaintenancePage() {
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <div className="flex items-center justify-end gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800 inline-flex">
-                                            <button 
+                                            <button
                                                 onClick={() => updateStatus(sys.id, 'Operational')}
                                                 className={cn("p-1.5 rounded transition-colors", sys.status === 'Operational' ? "bg-emerald-500 text-slate-950 shadow" : "text-slate-500 hover:text-emerald-500")}
                                                 title="Set Operational"
                                             >
                                                 <CheckCircle size={14} />
                                             </button>
-                                            <button 
+                                            <button
                                                 onClick={() => updateStatus(sys.id, 'Maintenance')}
                                                 className={cn("p-1.5 rounded transition-colors", sys.status === 'Maintenance' ? "bg-amber-500 text-slate-950 shadow" : "text-slate-500 hover:text-amber-500")}
                                                 title="Set Maintenance"
                                             >
                                                 <Wrench size={14} />
                                             </button>
-                                            <button 
+                                            <button
                                                 onClick={() => updateStatus(sys.id, 'Not Working')}
                                                 className={cn("p-1.5 rounded transition-colors", sys.status === 'Not Working' ? "bg-red-500 text-white shadow" : "text-slate-500 hover:text-red-500")}
                                                 title="Set Not Working"
@@ -179,7 +174,7 @@ export default function MaintenancePage() {
                                                 <AlertTriangle size={14} />
                                             </button>
                                             <div className="w-[1px] h-4 bg-slate-800 mx-1" />
-                                            <button 
+                                            <button
                                                 onClick={() => deleteSystem(sys.id)}
                                                 className="p-1.5 rounded text-slate-500 hover:text-red-500 hover:bg-red-500/10 transition-colors"
                                                 title="Delete Log"

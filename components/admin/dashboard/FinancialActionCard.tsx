@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { TrendingUp, ArrowUpRight, ArrowDownRight, TrendingDown, Bell, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/Card";
 
 export default function FinancialActionCard() {
   const [view, setView] = useState<'revenue' | 'overdue'>('revenue');
@@ -14,7 +15,7 @@ export default function FinancialActionCard() {
   };
 
   return (
-    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group shadow-xl hover:shadow-2xl hover:-translate-y-1 duration-300 relative overflow-hidden">
+    <Card className="rounded-2xl hover:border-white/20 transition-all group shadow-xl hover:shadow-2xl hover:-translate-y-1 duration-300 relative overflow-hidden">
 
       {/* Toggle View */}
       <div className="absolute top-6 right-6 flex bg-slate-800/50 p-1 rounded-lg border border-white/5 z-20">
@@ -91,6 +92,6 @@ export default function FinancialActionCard() {
         </>
       )}
 
-    </div>
+    </Card>
   );
 }

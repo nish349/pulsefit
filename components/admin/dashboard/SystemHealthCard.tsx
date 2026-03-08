@@ -3,6 +3,8 @@
 import { Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { Card } from "@/components/ui/Card";
+
 const systems = [
   { label: "Smart Lockers", status: "Operational", color: "bg-emerald-500", text: "text-emerald-500", eta: null },
   { label: "Access Control", status: "Online", color: "bg-emerald-500", text: "text-emerald-500", eta: null },
@@ -11,7 +13,7 @@ const systems = [
 
 export default function SystemHealthCard() {
   return (
-    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl h-full flex flex-col">
+    <Card className="h-full flex flex-col">
       <h3 className="font-bold text-white mb-5 flex items-center gap-2">
         <Activity size={18} className="text-slate-400" />
         System Health
@@ -36,6 +38,6 @@ export default function SystemHealthCard() {
           </div>
         ))}
       </div>
-    </div>
+    </Card>
   );
 }

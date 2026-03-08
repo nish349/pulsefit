@@ -38,7 +38,7 @@ export default function RegisterForm({ plans }: RegisterFormProps) {
     lastName: '',
     email: '',
     phone: '',
-    gender: '',
+    gender: '' as 'male' | 'female' | 'other' | '',
     address: '',
   });
 
@@ -61,6 +61,7 @@ export default function RegisterForm({ plans }: RegisterFormProps) {
     if (planParam) {
       const pId = parseInt(planParam);
       if (plans.find(p => p.id === pId)) {
+        // eslint-disable-next-line
         setSelectedPlanId(pId);
       }
     }
@@ -173,6 +174,7 @@ export default function RegisterForm({ plans }: RegisterFormProps) {
     try {
       await createMember({
         ...formData,
+        gender: formData.gender as 'male' | 'female' | 'other',
         planId: selectedPlanId,
         status: 'pending_payment',
         role: 'member',
@@ -211,7 +213,7 @@ export default function RegisterForm({ plans }: RegisterFormProps) {
           <div>
             <h4 className="font-bold text-amber-500 text-sm uppercase tracking-wider mb-1">Action Required</h4>
             <p className="text-sm text-slate-300">
-              We'll verify your details at the reception.
+              We&apos;ll verify your details at the reception.
               Password setup instructions will be sent to <span className="text-white font-medium">{formData.email}</span> later.
             </p>
           </div>
@@ -330,7 +332,7 @@ export default function RegisterForm({ plans }: RegisterFormProps) {
                 required
                 className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-neon/50 focus:ring-1 focus:ring-neon/50 transition-all appearance-none"
                 value={formData.gender}
-                onChange={(e) => setFormData(prev => ({ ...prev, gender: e.target.value }))}
+                onChange={(e) => setFormData(prev => ({ ...prev, gender: e.target.value as 'male' | 'female' | 'other' | '' }))}
               >
                 <option value="" disabled>Select Gender</option>
                 <option value="male">Male</option>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Clock, MapPin } from "lucide-react";
+import { Card } from "@/components/ui/Card";
 
 const classes = [
   { id: 1, name: "Morning Yoga Flow", time: "10:00 AM", instructor: "Sarah J.", location: "Studio A" },
@@ -17,7 +18,7 @@ export default function UpcomingClasses() {
 
       <div className="space-y-2">
         {classes.map((cls) => (
-          <div key={cls.id} className="bg-slate-900/40 border border-slate-800/50 p-4 rounded-xl flex items-center justify-between">
+          <Card key={cls.id} className="!p-4 !rounded-xl flex items-center justify-between">
             <div>
               <h4 className="font-semibold text-white mb-1">{cls.name}</h4>
               <div className="flex items-center gap-3 text-xs text-slate-400">
@@ -36,7 +37,7 @@ export default function UpcomingClasses() {
                 Details
               </button>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>

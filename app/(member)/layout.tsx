@@ -1,5 +1,35 @@
-import MemberSidebar from "@/components/member/MemberSidebar";
-import MobileNav from "@/components/member/MobileNav";
+'use client';
+
+import React from 'react';
+import { LayoutDashboard, Calendar, Dumbbell, CreditCard, Settings, Activity } from 'lucide-react';
+import PanelLayout, { PanelConfig } from '@/components/layout/PanelLayout';
+
+const memberConfig: PanelConfig = {
+  panelName: (
+    <>
+      <div className="w-8 h-8 rounded-lg bg-neon flex items-center justify-center text-slate-950">
+        <Activity size={20} strokeWidth={3} />
+      </div>
+      <span className="font-black text-xl text-white tracking-tight hidden md:block group-[.sidebar-open]:block">
+        PULSE<span className="text-neon">FIT</span>
+      </span>
+    </>
+  ),
+  navItems: [
+    { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { label: "My Schedule", href: "/dashboard/schedule", icon: Calendar },
+    { label: "Workouts", href: "/dashboard/workouts", icon: Dumbbell },
+    { label: "Billing", href: "/dashboard/billing", icon: CreditCard },
+    { label: "Settings", href: "/dashboard/settings", icon: Settings },
+  ],
+  userProfile: {
+    name: "Member User",
+    role: "Premium Plan",
+    initials: "ME"
+  },
+  basePath: '/dashboard',
+  theme: 'member'
+};
 
 export default function MemberLayout({
   children,
@@ -7,31 +37,8 @@ export default function MemberLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-black text-slate-200 font-sans selection:bg-neon/30">
-      {/* 
-        Mobile Navigation 
-        - Hidden on desktop (md:hidden)
-        - Fixed at top 
-      */}
-      <MobileNav />
-
-      {/* 
-        Desktop Sidebar 
-        - Hidden on mobile (hidden md:flex)
-        - Fixed at left
-      */}
-      <MemberSidebar />
-
-      {/* 
-        Main Content Area 
-        - Pushes content down on mobile (pt-16) to account for MobileNav
-        - Pushes content right on desktop (md:pl-[250px]) to account for Sidebar
-      */}
-      <main className="flex-1 pt-16 md:pt-0 md:pl-[250px] transition-all duration-300">
-        <div className="p-4 md:p-8 max-w-7xl mx-auto">
-          {children}
-        </div>
-      </main>
-    </div>
+    <PanelLayout config={memberConfig}>
+      {children}
+    </PanelLayout>
   );
 }

@@ -2,7 +2,7 @@ const SHEETS_API_URL = process.env.NEXT_PUBLIC_SHEETS_API_URL || '';
 
 export const api = {
     // Generic Fetch
-    async fetchData(type: 'Plans' | 'Maintenance' | 'Members' | 'Leads' | 'Staff'): Promise<any[] | null> {
+    async fetchData(type: 'Plans' | 'Maintenance' | 'Members' | 'Leads' | 'Staff'): Promise<unknown[] | null> {
         if (!SHEETS_API_URL) return null;
 
         try {
@@ -18,7 +18,7 @@ export const api = {
     },
 
     // Generic Save
-    async saveData(type: 'Plans' | 'Maintenance' | 'Members' | 'Leads' | 'Staff', data: any[]): Promise<boolean> {
+    async saveData(type: 'Plans' | 'Maintenance' | 'Members' | 'Leads' | 'Staff', data: unknown[]): Promise<boolean> {
         if (!SHEETS_API_URL) return false;
 
         try {

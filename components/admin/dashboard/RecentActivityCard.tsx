@@ -2,10 +2,11 @@
 
 import { Activity, MoreHorizontal, CreditCard, Users, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Card } from '@/components/ui/Card';
 
 export default function RecentActivityCard() {
   return (
-    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+    <Card className="overflow-hidden !p-0">
       <div className="p-6 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
         <h3 className="font-bold text-white text-lg flex items-center gap-2">
           <Activity size={18} className="text-slate-400" />
@@ -39,6 +40,6 @@ export default function RecentActivityCard() {
       <div className="p-4 bg-white/[0.02] border-t border-white/5 text-center">
         <button className="text-xs text-emerald-500 hover:text-emerald-400 font-bold uppercase tracking-widest hover:underline decoration-2 underline-offset-4 transition-all">View All Activity</button>
       </div>
-    </div>
+    </Card>
   );
 }

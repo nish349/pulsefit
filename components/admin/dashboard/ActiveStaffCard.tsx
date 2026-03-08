@@ -2,6 +2,7 @@
 
 import { Users, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/Card";
 
 const staff = [
   { name: "Rahul", role: "PT Floor", status: "Online", time: "06:00 AM" },
@@ -12,7 +13,7 @@ const staff = [
 
 export default function ActiveStaffCard() {
   return (
-    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group shadow-xl hover:shadow-2xl hover:-translate-y-1 duration-300 flex flex-col h-full">
+    <Card className="hover:border-white/20 transition-all group hover:-translate-y-1 duration-300 flex flex-col h-full rounded-2xl shadow-xl hover:shadow-2xl">
       <div className="flex justify-between items-start mb-6">
         <div className="p-3.5 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-indigo-500/5 text-indigo-400 border border-white/5 shadow-inner">
           <Users size={24} strokeWidth={1.5} />
@@ -45,6 +46,6 @@ export default function ActiveStaffCard() {
       <div className="mt-4 pt-3 border-t border-white/5 text-center">
         <button className="text-xs text-indigo-400 hover:text-indigo-300 font-bold uppercase tracking-widest hover:underline decoration-2 underline-offset-4 transition-all">View Schedule</button>
       </div>
-    </div>
+    </Card>
   );
 }

@@ -23,16 +23,16 @@ interface GymStore {
   updateSystem: (system: SystemStatus) => void;
 
   // Members
-  members: any[]; // Using any for speed, ideally typed
-  setMembers: (members: any[]) => void;
+  members: unknown[]; // Using any for speed, ideally typed
+  setMembers: (members: unknown[]) => void;
 
   // Leads
-  leads: any[];
-  setLeads: (leads: any[]) => void;
+  leads: unknown[];
+  setLeads: (leads: unknown[]) => void;
 
   // Staff
-  staff: any[];
-  setStaff: (staff: any[]) => void;
+  staff: unknown[];
+  setStaff: (staff: unknown[]) => void;
 }
 
 export interface SystemStatus {
